@@ -13,3 +13,5 @@ If you want to rebuild the image:
 ```
 docker compose up --build
 ```
+
+This will run the mysql instance on your localhost port `3306` which can be accessed via any mysql client or by using MySql Workbench.
