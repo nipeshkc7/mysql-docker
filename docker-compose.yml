@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  db:
+    platform: linux/x86_64
+    image: mysql:5.7
+    volumes:
+      - db_volume:/var/lib/mysql
+      - "./sql/dev_init.sql:/docker-entrypoint-initdb.d/1.sql"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: testdb
+      MYSQL_USER: testuser 
+      MYSQL_PASSWORD: password
+    networks:
+      local-dev: 
+        aliases:
+          - mysqldatabase
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+      
+volume:
+  db_volume: {}
